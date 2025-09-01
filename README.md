@@ -6,7 +6,7 @@ In more detail: it sends the signal "Play/pause media" to your OS when your life
 - put file `gamestate_integration_music.cfg` in directory your directory `...\Steam\steamapps\common\Counter-Strike Global Offensive\game\csgo\cfg`
 - open Steam, change to your profile (button next to `store`/`library` and copy the number from the url at the top (e.g. `4892389423924399` from `https://steamcommunity.com/profiles/4892389423924399/` - that's your SteamId)
 - download `cs2_music_control.py` file to somewhere on your computer, open it with editor and replace `ADD-STEAM-ID-HERE` with your SteamId
-- download (Python)[https://www.python.org/downloads/] with PIP (that's the package installer for Python)
+- download [Python](https://www.python.org/downloads) with included PIP (that's the package installer for Python)
 - open the command line and download the libraries flask and keyboard to your system for the Python script to run: `pip install flask keyboard`
 
 ### Run the script
