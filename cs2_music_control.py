@@ -9,17 +9,15 @@ app = Flask(__name__)
 
 is_dead = None
 
+
 def set_dead(dead_now: bool):
+    print("state changed; toggle music state")
     global is_dead
-    if dead_now != is_dead:
-        print("state changed; toggle music state")
-        is_dead = dead_now
-        waitSeconds = 3 if dead_now else 10
-        
-        time.sleep(waitSeconds)
-        
-        # toggle play/pause state
-        keyboard.send("play/pause media")
+    is_dead = dead_now
+    
+    time.sleep(3 if dead_now else 10)
+    
+    keyboard.send("play/pause media")
 
 
 @app.route("/gsi", methods=["POST"])
