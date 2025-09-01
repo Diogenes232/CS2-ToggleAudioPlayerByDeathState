@@ -26,7 +26,6 @@ def set_dead(dead_now: bool):
 def gsi():
     auth = request.json.get("auth", {})
     if AUTH_TOKEN and auth.get("token") != AUTH_TOKEN:
-        #abort(401)
         return "abort"
 
     player = request.json.get("player", {})
@@ -36,8 +35,15 @@ def gsi():
     state = player.get("state", {})
     health = state.get("health")
 
+    global was_dead
     if isinstance(health, int):
-        set_dead(health <= 0)
+        dead_now = health <= 0
+        if dead_now == False and (was_dead == None or was_dead == True):
+            toggleStateAndMusic(dead_now)
+        elif dead_now == True and was_dead == False:
+            toggleStateAndMusic(dead_now)
+    elif was_dead == False:
+        toggleStateAndMusic(dead_now)
 
     return "ok"
 
@@ -45,3 +51,4 @@ def gsi():
 if __name__ == "__main__":
     print(f"Listening on http://127.0.0.1:{PORT}/gsi")
     app.run(host="127.0.0.1", port=PORT, debug=False)
+
