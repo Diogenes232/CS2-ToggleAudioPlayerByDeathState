@@ -3,17 +3,17 @@ import time, keyboard
 
 AUTH_TOKEN = "supersecret"  # must match the cfg file
 PORT = 3000
-MY_STEAMID = "ADD-STEAM-ID-HERE"
+MY_STEAMID = "ADD_STEAM_ID_HERE"
 
 app = Flask(__name__)
 
-is_dead = None
+was_dead = None
 
 
-def set_dead(dead_now: bool):
+def toggleStateAndMusic(dead_now: bool):
     print("state changed; toggle music state")
-    global is_dead
-    is_dead = dead_now
+    global was_dead
+    was_dead = dead_now
     
     time.sleep(3 if dead_now else 10)
     
